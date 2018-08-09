@@ -1,0 +1,41 @@
+#include <iostream>
+
+using namespace std;
+
+int main (){
+    
+    int puz1, puz2, puz3, puz4, puz5, puz6, puz7, puz8, puz9, puz10, puz11, puz12;
+    char choice1;
+    cout << "Math Puzzle Game\n" << "Are you ready? Y/N: ";
+    cin >> choice1;
+    
+    if (choice1 == 'Y') {
+        
+    }
+    
+    else {
+        
+        exit (0);
+    }
+    
+    cout << "Puzzle 1: I am a number with a couple of friends, quarter a dozen, and you'll find me again. What am I?\n";
+    cin >> puz1;
+    
+    switch (puz1){
+        
+        case 3:
+            cout << "Puzzle 2: ";
+        break;
+        
+        default:
+            do {
+                
+                cout << "Try again: ";
+                cin >> puz1;    
+            }
+            while (puz1 != 3);
+    }
+    
+    
+    return 0;
+}
