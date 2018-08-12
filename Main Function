@@ -1,41 +1,81 @@
+/*The code below was developed with the help of A.R. He taught me about the simplification of code. I should try to not copy and past
+ *This is because there's always a way for you to do more with less lines. He took what I developed initially and then changed it all. Basically
+ *He deserves all the credit for this program. Although I did write the last switch statement so horray!*/
+
 #include <iostream>
 
 using namespace std;
 
 int main (){
-    
-    int puz1, puz2, puz3, puz4, puz5, puz6, puz7, puz8, puz9, puz10, puz11, puz12;
-    char choice1;
-    cout << "Math Puzzle Game\n" << "Are you ready? Y/N: ";
-    cin >> choice1;
-    
-    if (choice1 == 'Y') {
-        
-    }
-    
-    else {
-        
-        exit (0);
-    }
-    
-    cout << "Puzzle 1: I am a number with a couple of friends, quarter a dozen, and you'll find me again. What am I?\n";
-    cin >> puz1;
-    
-    switch (puz1){
-        
-        case 3:
-            cout << "Puzzle 2: ";
-        break;
-        
-        default:
-            do {
-                
-                cout << "Try again: ";
-                cin >> puz1;    
-            }
-            while (puz1 != 3);
-    }
-    
-    
-    return 0;
+
+   char choice_1;
+
+   cout << "Welcome to 5 Math Puzzles.You Have 100 Life Points. Each Time you Make the Wrong Choice, you will be docked 5 points and given a rating at the end of the Game.\n" << "Choose Wisely! Are you Ready to Begin? Y/N: ";
+   cin >> choice_1;
+   if (choice_1 == 'Y'){
+      cout << "Let's Begin!\n";
+   }
+   else {
+      exit (0);
+   }
+
+   const char* questions[] = {
+      "I am a number with a couple of friends, quarter a dozen, and you'll find me again. What am I?",
+      "There is a three digit number. The second digit is four times as big as the third digit, while the first digit is three less than the second digit. What is the number?",
+      "How many 9's are there between 1 and 100?",
+      "In two years I know, I'll be twice as old as five years ago, said Tom. How old is Tom?",
+      "What is half of two plus two? "
+   };
+
+   int answers[] = {
+      3,        // Q1
+      141,   // Q2
+      20,      // Q3
+      12,      // Q4
+      3,        // Q5
+   };
+
+   int input_from_user;
+   int user_health = 100;
+
+   for(int current_question_index = 0; current_question_index < 5 && user_health > 0; current_question_index++){
+      // Print out the question
+      cout << "Puzzle: "<<current_question_index<<" "<<questions[current_question_index] << endl;
+      // Repeated until End Condition
+      do {
+         // Collecting Input
+         cout<<"Guess: ";
+         cin >> input_from_user;
+         cout<<endl;
+
+         // Processing the Input (to see if it's wrong)
+         if (input_from_user != answers[current_question_index]){
+            user_health -= 10;
+            cout<<"Wrong! Remaining Health: "<<user_health<<endl;
+         }
+
+         // Check if we can move on to the next question
+      } while (input_from_user != answers[current_question_index] && user_health > 0);
+   }
+
+      switch (user_health) {
+
+         case 0:
+            cout << "You Lose";
+         break;
+
+         case 90:
+            cout << "You performed Wonderfully";
+         break;   
+         
+         case 100:
+            cout << "Congratulations! You are a Genius";  
+         break;    
+      }
+
+   // Check if the user Died or if they ran out of Questions:
+   // Inform User or congratulate them?
+
+   return 0;
+
 }
